@@ -13,11 +13,15 @@ const monthList = [
     "Dec."
 ]
 const month = document.querySelector(".month");
-const date = document.querySelector(".date");
+const dateAll = document.querySelector(".date");
+const date = document.querySelectorAll(".date > div")
+
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
-const time = new Date();
 
+const modal = document.querySelector(".modal");
+
+const time = new Date();
 let monthIndex = time.getMonth();
 let year = time.getFullYear();
 
@@ -29,7 +33,7 @@ const paintYearMonth = () => {
 
 //* 이번달 date 그리는 함수
 const paintThisDate = () => {
-   /* 반복 하는 부분 */
+    /* 반복 하는 부분 */
     const lastDate = new Date(year, monthIndex + 1, 0).getDate();
     const firstDay = new Date(year, monthIndex, 0).getDay() + 1;
 
@@ -41,17 +45,17 @@ const paintThisDate = () => {
             const dateTag = document.createElement("div");
             dateTag.innerText = lastMonthDate;
             dateTag.className = "last-month-date";
-            date.appendChild(dateTag);
+            dateAll.appendChild(dateTag);
             lastMonthDate++;
         }
     }
     for (let i = 0; i <= lastDate; i++) {
         const dateTag = document.createElement("div");
         dateTag.innerText = thisMonthDate;
-        if (time.getDate() == thisMonthDate) {
+        if ((time.getDate() == thisMonthDate) && (monthIndex === time.getMonth() && year === time.getFullYear())) {
             dateTag.className = "today";
         }
-        date.appendChild(dateTag);
+        dateAll.appendChild(dateTag);
         thisMonthDate++;
     }
     /* 반복 하는 부분 */
@@ -59,7 +63,7 @@ const paintThisDate = () => {
 
 //* 저번 달 넘어가는 함수
 const handlenextMonth = () => {
-    date.innerHTML = "";
+    dateAll.innerHTML = "";
     if (monthIndex === 0) {
         monthIndex = 11;
         year -= 1;
@@ -82,17 +86,17 @@ const handlenextMonth = () => {
             const dateTag = document.createElement("div");
             dateTag.innerText = lastMonthDate;
             dateTag.className = "last-month-date";
-            date.appendChild(dateTag);
+            dateAll.appendChild(dateTag);
             lastMonthDate++;
         }
     }
     for (let i = 1; i <= lastDate; i++) {
         const dateTag = document.createElement("div");
         dateTag.innerText = thisMonthDate;
-        if (time.getDate() == thisMonthDate) {
+        if ((time.getDate() == thisMonthDate) && (monthIndex === time.getMonth() && year === time.getFullYear())) {
             dateTag.className = "today";
         }
-        date.appendChild(dateTag);
+        dateAll.appendChild(dateTag);
         thisMonthDate++;
     }
     /* 반복되는 부분 */
@@ -100,7 +104,7 @@ const handlenextMonth = () => {
 
 //* 다음 달 넘어가는 함수
 const handleNextMonth = () => {
-    date.innerHTML = "";
+    dateAll.innerHTML = "";
     if (monthIndex === 11) {
         monthIndex = 0;
         year += 1;
@@ -121,17 +125,17 @@ const handleNextMonth = () => {
             const dateTag = document.createElement("div");
             dateTag.innerText = lastMonthDate;
             dateTag.className = "last-month-date";
-            date.appendChild(dateTag);
+            dateAll.appendChild(dateTag);
             lastMonthDate++;
         }
     }
     for (let i = 1; i <= lastDate; i++) {
         const dateTag = document.createElement("div");
         dateTag.innerText = thisMonthDate;
-        if (time.getDate() == thisMonthDate) {
+        if ((time.getDate() == thisMonthDate) && (monthIndex === time.getMonth() && year === time.getFullYear())) {
             dateTag.className = "today";
         }
-        date.appendChild(dateTag);
+        dateAll.appendChild(dateTag);
         thisMonthDate++;
     }
 
