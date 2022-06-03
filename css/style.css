@@ -4,10 +4,10 @@ html {
     padding-left: 10px;
     padding-right: 10px;
 }
-/* * 다크모드
-body {
-   background-color: #0000
-} */
+
+/* body {
+   background-color: rgb(092, 105, 140)
+}  */
 
 /* header css */
 
@@ -33,13 +33,17 @@ body {
 .month {
     text-align: center;
     flex: 1;
+    font-family: 'Staatliches', cursive;
+    font-size: 4em;
+    text-align: center;
+    margin: 0;
 }
 
 .gitbox {
     flex: 1;
     text-align: end;
 }
-/* header css */
+/* //header css */
 
 .days {
     display: flex;
@@ -49,7 +53,7 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
-    border: 2px solid #4780e5; ;
+    border: 2px solid #05c3a7; ;
     font-weight: bold;
     box-shadow: 0px 10px 10px -8px #607d8b;
 }
