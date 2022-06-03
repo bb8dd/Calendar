@@ -97,6 +97,7 @@ html {
 }
 
 .date > .last-month-date {
+    background-color: hsl(0, 0%, 90%);
     color: #9b9b9b;
 }
 
