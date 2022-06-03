@@ -9,7 +9,7 @@ const getYearMonth = () => {
     month.innerText = `${thisMonth}${thisYear}`
 }
 
-const getThisMonth = () => {
+const paintThisMonth = () => {
    
    const time = new Date();
    const nowYear = time.getFullYear();
@@ -45,5 +45,5 @@ const getThisMonth = () => {
 
 
 window.addEventListener("load", getYearMonth)
-window.addEventListener("load", getThisMonth)
+window.addEventListener("load", paintThisMonth)
 

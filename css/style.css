@@ -3,14 +3,21 @@
 body,
 html {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
     padding-left: 10px;
     padding-right: 10px;
-    height: 100%;
 }
 
-/* body {
-   background-color: rgb(092, 105, 140)
-}  */
+.bg {
+    object-fit: cover;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
 
 /* header css */
 
@@ -49,7 +56,7 @@ html {
     border-radius: 10px;
     border: 1px solid;
     font-weight: bold;
-    box-shadow: 0px 10px 10px -8px #000000;
+    box-shadow: 0 10px 10px -8px #000000;
 }
 
 .days > div {
@@ -68,7 +75,12 @@ html {
     color: blue;
 }
 
-/* body */
+/* container */
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
 
 .date {
     display: grid;
@@ -86,46 +98,70 @@ html {
 }
 
 .date > div {
-    border:1px solid #9b9b9b;
+    border: 1px solid #9b9b9b;
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
 
 .date > .today {
-    background-color: rgb(0, 238, 255);
+    background-color: rgba(95, 145, 255, 1);
 }
 
 .date > .last-month-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: hsl(0, 0%, 90%);
     color: #9b9b9b;
 }
 
-/* //body */
+.modal {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    background-color: beige;
+    position: absolute;
+    /* margin: auto; */
+    margin-left: 25%;
+    margin-right: 25%;
+    box-shadow: 10px 10px 10px -8px #000000;
+}
+
+.modal > .title {
+    vertical-align: middle;
+    width: 90%;
+    height: 10%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid;
+}
+
+.modal > .modal-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+/* //container */
 
 /* footer */
 
 #footer {
+    position: absolute;
     display: flex;
     align-items: center;
-    flex-direction: row;
-}
-
-.updateDate {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.updateDate > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.gitbox {
-    flex: 1;
-    text-align: end;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
 }
 
 /* //footer */
