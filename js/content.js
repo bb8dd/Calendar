@@ -1,11 +1,12 @@
 const month = document.querySelector(".month");
 const date = document.querySelector(".date");
+const monthList = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
 
 const getYearMonth = () => {
     const time = new Date();
-    const dateMonth = String(time.getMonth() + 1).padStart(2, "0");
-    const dateYear = String(time.getFullYear());
-    month.innerText = `${dateYear}.${dateMonth}`
+    const thisMonth = monthList[time.getMonth()];
+    const thisYear = String(time.getFullYear());
+    month.innerText = `${thisMonth}${thisYear}`
 }
 
 const getThisMonth = () => {
