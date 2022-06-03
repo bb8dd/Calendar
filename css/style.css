@@ -10,6 +10,15 @@ html {
     padding-right: 10px;
 }
 
+body {
+    color: wheat;
+    background: #060e1b;
+}
+
+canvas {
+    z-index: 0 !important;
+}
+
 .bg {
     object-fit: cover;
 }
