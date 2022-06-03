@@ -91,9 +91,7 @@ const handlePrevMonth = () => {
 }
 
 //* 다음 달 넘어가는 함수
-const handleNextMonth = () => {
-   
-}
+const handleNextMonth = () => {}
 
 window.addEventListener("load", paintYearMonth);
 window.addEventListener("load", paintThisDate);
