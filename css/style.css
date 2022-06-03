@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
 body,
 html {
     margin: 0;
@@ -33,7 +35,7 @@ html {
 .month {
     text-align: center;
     flex: 1;
-    font-family: 'Staatliches', cursive;
+    font-family: fantasy;
     font-size: 4em;
     text-align: center;
     margin: 0;
@@ -45,7 +47,8 @@ html {
 }
 /* //header css */
 
-.days {
+.day-of-the-week {
+    font-family: 'Kdam Thmor Pro', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -53,23 +56,44 @@ html {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
-    border: 2px solid #05c3a7; ;
+    border: 10px solid #26c2db; ;
     font-weight: bold;
-    box-shadow: 0px 10px 10px -8px #607d8b;
+    box-shadow: 0px 10px 10px -8px #000000;
 }
 
-.days > div {
+.day-of-the-week > div {
     flex: 1;
     text-align: center;
 }
 
-.days > div:not(:first-child) {
+.day-of-the-week > div:not(:first-child) {
     border-left: 1px solid;
 }
 
-.days > div:first-child {
+.day-of-the-week > div:first-child {
     color: red;
 }
-.days > div:last-child {
+.day-of-the-week > div:last-child {
     color: blue;
+}
+
+/* body */
+
+.days {
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    grid-template-columns: repeat(7, minmax(10px, 1fr));
+    grid-auto-rows: 120px;
+}
+
+.days > div {
+    border:1px solid #9b9b9b;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
