@@ -1,49 +1,101 @@
+const monthList = [
+    "Jan.",
+    "Feb.",
+    "Mar.",
+    "Apr.",
+    "May.",
+    "Jun.",
+    "Jul.",
+    "Aug.",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Dec."
+]
 const month = document.querySelector(".month");
 const date = document.querySelector(".date");
-const monthList = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const time = new Date();
 
-const getYearMonth = () => {
-    const time = new Date();
-    const thisMonth = monthList[time.getMonth()];
-    const thisYear = String(time.getFullYear());
-    month.innerText = `${thisMonth}${thisYear}`
+let monthIndex = time.getMonth();
+let year = time.getFullYear();
+
+//* 연도, 월 가져오는 함수
+const paintYearMonth = () => {
+    const thisMonth = monthList[monthIndex];
+    month.innerText = `${thisMonth}${year}`
 }
 
-const paintThisMonth = () => {
+//* 이번달 date 그리는 함수
+const paintThisDate = () => {
+
+    const lastDate = new Date(year, monthIndex + 1, 0).getDate();
+    const firstDay = new Date(year, monthIndex, 0).getDay() + 1;
+
+    let thisMonthDate = 1;
+    let lastMonthDate = new Date(year, monthIndex, 0).getDate() - (firstDay - 1);
+
+    for (let i = 0; i < firstDay; i++) {
+        const dateTag = document.createElement("div");
+        dateTag.innerText = lastMonthDate;
+        dateTag.className = "last-month-date";
+        date.appendChild(dateTag);
+        lastMonthDate++;
+    }
+    for (let i = 0; i <= lastDate; i++) {
+        const dateTag = document.createElement("div");
+        dateTag.innerText = thisMonthDate;
+        if (time.getDate() == thisMonthDate) {
+            dateTag.className = "today";
+        }
+        date.appendChild(dateTag);
+        thisMonthDate++;
+    }
+}
+
+//* 저번 달 넘어가는 함수
+const handlePrevMonth = () => {
+    date.innerHTML = "";
+    if (monthIndex === 0) {
+        monthIndex = 12;
+        year -= 1;
+        console.log(year);
+    }
+    monthIndex = monthIndex - 1;
+    const prevMonth = monthList[monthIndex];
+    month.innerText = `${prevMonth}${year}`
+
+    const lastDate = new Date(year, monthIndex + 1, 0).getDate();
+    const firstDay = new Date(year, monthIndex, 0).getDay() + 1;
+
+    let thisMonthDate = 1;
+    let lastMonthDate = new Date(year, monthIndex, 0).getDate() - (firstDay - 1);
+
+    for (let i = 0; i < firstDay; i++) {
+        const dateTag = document.createElement("div");
+        dateTag.innerText = lastMonthDate;
+        dateTag.className = "last-month-date";
+        date.appendChild(dateTag);
+        lastMonthDate++;
+    }
+    for (let i = 1; i <= lastDate; i++) {
+        const dateTag = document.createElement("div");
+        dateTag.innerText = thisMonthDate;
+        if (time.getDate() == thisMonthDate) {
+            dateTag.className = "today";
+        }
+        date.appendChild(dateTag);
+        thisMonthDate++;
+    }
+}
+
+//* 다음 달 넘어가는 함수
+const handleNextMonth = () => {
    
-   const time = new Date();
-   const nowYear = time.getFullYear();
-   const nowMonth = time.getMonth()+1;
-
-   const lastDate = new Date(nowYear, nowMonth, 0).getDate();
-   const firstDay = new Date(nowYear, nowMonth-1, 0).getDay() + 1;
-   console.log("이번 달 마지막",lastDate);
-   console.log("이번 달 첫 요일",firstDay);
-
-   let thisMonthDate = 1;
-   let lastMonthDate = new Date(nowYear, nowMonth-1, 0).getDate() - (firstDay-1);
-
-   for(let i = 0; i < firstDay; i++ ){
-      console.log(i);
-      const dateTag = document.createElement("div");
-      dateTag.innerText = lastMonthDate;
-      dateTag.className  = "last-month-date";
-      date.appendChild(dateTag);
-      lastMonthDate++;
-   }
-   for(let i = 0; i <= lastDate; i++){
-      const dateTag = document.createElement("div");
-      dateTag.innerText = thisMonthDate;
-      if(time.getDate() == thisMonthDate){
-         dateTag.className = "today";
-         console.log("같은 날", thisMonthDate)
-      }
-      date.appendChild(dateTag);
-      thisMonthDate++;
-   }
 }
 
-
-window.addEventListener("load", getYearMonth)
-window.addEventListener("load", paintThisMonth)
-
+window.addEventListener("load", paintYearMonth);
+window.addEventListener("load", paintThisDate);
+prevBtn.addEventListener("click", handlePrevMonth);
+nextBtn.addEventListener("click", handleNextMonth);
