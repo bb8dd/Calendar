@@ -71,13 +71,14 @@ const handlePrevMonth = () => {
 
     let thisMonthDate = 1;
     let lastMonthDate = new Date(year, monthIndex, 0).getDate() - (firstDay - 1);
-
-    for (let i = 0; i < firstDay; i++) {
-        const dateTag = document.createElement("div");
-        dateTag.innerText = lastMonthDate;
-        dateTag.className = "last-month-date";
-        date.appendChild(dateTag);
-        lastMonthDate++;
+    if (firstDay !== 7) {
+        for (let i = 0; i < firstDay; i++) {
+            const dateTag = document.createElement("div");
+            dateTag.innerText = lastMonthDate;
+            dateTag.className = "last-month-date";
+            date.appendChild(dateTag);
+            lastMonthDate++;
+        }
     }
     for (let i = 1; i <= lastDate; i++) {
         const dateTag = document.createElement("div");
@@ -91,7 +92,13 @@ const handlePrevMonth = () => {
 }
 
 //* 다음 달 넘어가는 함수
-const handleNextMonth = () => {}
+const handleNextMonth = () => {
+    date.innerHTML = "";
+    if (monthIndex === 11) {
+        monthIndex = 0;
+        year += 1;
+    }
+}
 
 window.addEventListener("load", paintYearMonth);
 window.addEventListener("load", paintThisDate);
