@@ -6,8 +6,7 @@ html {
     padding: 0;
     height: 100%;
     overflow: hidden;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
 }
 
 body {
@@ -20,9 +19,10 @@ body {
 }
 
 #wrapper {
-    width: 100%;
-    height: 100%;
     z-index: 10;
+    padding-bottom: 100px;
+    border: 1px solid wheat;
+    padding: 10px;
 }
 
 /* header css */
@@ -97,7 +97,7 @@ body {
     margin-top: 10px;
     border-radius: 10px;
     grid-template-columns: repeat(7, minmax(10px, 1fr));
-    grid-auto-rows: 120px;
+    grid-template-rows: repeat(6, minmax(110px, 1fr));
     gap: 10px;
 
     font-family: 'Kdam Thmor Pro';
@@ -161,17 +161,14 @@ body {
 /* footer */
 
 #footer {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    margin-top: 10px;
+    position: relative;
+    height: 100px;
+    transform: translateY(-100%);
 }
 
-#footer > .wheat {
-    fill: wheat;
+#footer > div {
+    width: 50px;
+    height: 50px;
 }
 
 /* //footer */
