@@ -71,7 +71,7 @@ body {
 }
 
 .days > div:not(:first-child) {
-    border-left: 1px solid;
+    border-left: 1px solid wheat;
 }
 
 .days > div:first-child {
